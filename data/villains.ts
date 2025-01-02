@@ -1,0 +1,148 @@
+import { Villain } from '@/lib/types';
+
+export const villains: Villain[] = [
+	{
+		id: 'malefica',
+		name: 'Malefica',
+		difficulty: 'medium',
+		img: '/villains/Maleficent.webp',
+	},
+	{
+		id: 'ursula',
+		name: 'Ursula',
+		difficulty: 'hard',
+		img: '/villains/Ursula.webp',
+	},
+	{
+		id: 'uncino',
+		name: 'Capitan Uncino',
+		difficulty: 'easy',
+		img: '/villains/Captain_Hook.webp',
+	},
+	{
+		id: 'jafar',
+		name: 'Jafar',
+		difficulty: 'medium',
+		img: '/villains/Jafar.webp',
+	},
+	{
+		id: 'giovanni',
+		name: 'Principe Giovanni',
+		difficulty: 'easy',
+		img: '/villains/Prince_John.webp',
+	},
+	{
+		id: 'cuori',
+		name: 'Regina di Cuori',
+		difficulty: 'easy',
+		img: '/villains/Queen_of_Hearts.webp',
+	},
+	{
+		id: 'rattigan',
+		name: 'Rattigan',
+		difficulty: 'easy',
+		img: '/villains/Ratigan.webp',
+	},
+	{
+		id: 'scar',
+		name: 'Scar',
+		difficulty: 'hard',
+		img: '/villains/Scar.webp',
+	},
+	{
+		id: 'yzma',
+		name: 'Yzma',
+		difficulty: 'medium',
+		img: '/villains/Yzma.webp',
+	},
+	{
+		id: 'matrigna',
+		name: 'La matrigna',
+		difficulty: 'medium',
+		img: '/villains/Lady_Tremaine.webp',
+	},
+	{
+		id: 'gaston',
+		name: 'Gaston',
+		difficulty: 'medium',
+		img: '/villains/Gaston.webp',
+	},
+	{
+		id: 'cornelius',
+		name: 'Re Cornelius',
+		difficulty: 'hard',
+		img: '/villains/Horned_King.webp',
+	},
+	{
+		id: 'syndrome',
+		name: 'Syndrome',
+		difficulty: 'medium',
+		img: '/villains/Syndrome.webp',
+	},
+	{
+		id: 'lotso',
+		name: 'Lotso',
+		difficulty: 'hard',
+		img: '/villains/Lotso.webp',
+	},
+	{
+		id: 'mago',
+		name: 'Maga Magò',
+		difficulty: 'easy',
+		img: '/villains/Madam_Mim.webp',
+	},
+	{
+		id: 'ade',
+		name: 'Ade',
+		difficulty: 'hard',
+		img: '/villains/Hades.webp',
+	},
+	{
+		id: 'facilier',
+		name: 'Dr. Facilier',
+		difficulty: 'easy',
+		img: '/villains/Dr_Facilier.webp',
+	},
+	{
+		id: 'cattiva',
+		name: 'Regina cattiva',
+		difficulty: 'easy',
+		img: '/villains/Evil_Queen.webp',
+	},
+	{
+		id: 'gambadilegno',
+		name: 'Gambadilegno',
+		difficulty: 'medium',
+		img: '/villains/Pete.webp',
+	},
+	{
+		id: 'crudelia',
+		name: 'Crudelia de Mon',
+		difficulty: 'hard',
+		img: '/villains/Cruella_De_Vil.webp',
+	},
+	{
+		id: 'gothel',
+		name: 'Madre Gothel',
+		difficulty: 'hard',
+		img: '/villains/Mother_Gothel.webp',
+	},
+	{
+		id: 'candito',
+		name: 'Re Candito',
+		difficulty: 'easy',
+		img: '/villains/King_Candy.webp',
+	},
+	{
+		id: 'sherkhan',
+		name: 'Shere Khan',
+		difficulty: 'easy',
+		img: '/villains/Shere_Khan.webp',
+	},
+	{
+		id: 'baubau',
+		name: 'Bau Bau',
+		difficulty: 'easy',
+		img: '/villains/Oogie_Boogie.webp',
+	},
+];

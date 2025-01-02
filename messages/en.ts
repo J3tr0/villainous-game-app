@@ -1,0 +1,17 @@
+export default {
+	numberOfPlayers: 'Number of Players',
+	difficultyLevel: 'Difficulty Level',
+	startGame: 'Start Game',
+	easy: 'Easy',
+	medium: 'Medium',
+	hard: 'Hard',
+	loading: 'Loading...',
+	selectYourVillains: 'Select Your Villains',
+	gameOrder: 'Game Order',
+	firstPlayer: 'First Player!',
+	player: 'Player',
+	dontHaveVillain: "Don't have this villain",
+	noMoreVillains: 'No more villains available',
+	backToSettings: 'Back to Settings',
+	gameStarted: 'Game Started',
+} as const;

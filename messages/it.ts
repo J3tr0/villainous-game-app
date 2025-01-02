@@ -1,0 +1,17 @@
+export default {
+	numberOfPlayers: 'Numero di Giocatori',
+	difficultyLevel: 'Livello di Difficoltà',
+	startGame: 'Inizia Partita',
+	easy: 'Facile',
+	medium: 'Medio',
+	hard: 'Difficile',
+	loading: 'Caricamento...',
+	selectYourVillains: 'Seleziona i tuoi Cattivi',
+	gameOrder: 'Ordine di Gioco',
+	firstPlayer: 'Primo Giocatore!',
+	player: 'Giocatore',
+	dontHaveVillain: 'Non ho questo cattivo',
+	noMoreVillains: 'Non ci sono più cattivi disponibili',
+	backToSettings: 'Torna alle Impostazioni',
+	gameStarted: 'Partita Iniziata',
+} as const;
