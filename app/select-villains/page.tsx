@@ -5,9 +5,9 @@ import { useTranslations } from '@/hooks/useTranslations';
 import type { GameSettings, Villain } from '@/lib/types';
 import Image from 'next/image';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 
-export default function SelectVillains() {
+function SelectVillainsContent() {
 	const router = useRouter();
 	const searchParams = useSearchParams();
 	const numberOfPlayers = Number(searchParams.get('players')) || 2;
@@ -208,7 +208,7 @@ export default function SelectVillains() {
 					<button
 						onClick={() => router.back()}
 						className="bg-white/10 border border-white/20
-								 text-white px-8 py-3 rounded-xl font-bold
+								 text-white px-8 py-3 rounded-lg font-bold
 								 hover:scale-105 transition-transform
 								 hover:bg-white/20 shadow-lg">
 						{t.backToSettings}
@@ -218,7 +218,7 @@ export default function SelectVillains() {
 						onClick={handleStart}
 						disabled={startingPlayer !== null}
 						className={`
-								px-8 py-3 rounded-xl font-bold
+								px-8 py-3 rounded-lg font-bold
 								transition-all duration-300 shadow-lg
 								${
 									startingPlayer === null
@@ -231,5 +231,13 @@ export default function SelectVillains() {
 				</div>
 			</div>
 		</div>
+	);
+}
+
+export default function SelectVillains() {
+	return (
+		<Suspense fallback={<div>Loading...</div>}>
+			<SelectVillainsContent />
+		</Suspense>
 	);
 }

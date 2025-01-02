@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import { Metadata, Viewport } from 'next';
 import { Roboto_Condensed } from 'next/font/google';
 import './globals.css';
 
@@ -11,32 +11,34 @@ export const metadata: Metadata = {
 	title: 'Disney Villainous Companion',
 	description: 'Companion app for Disney Villainous board game',
 	manifest: '/manifest.json',
+};
+
+export const viewport: Viewport = {
 	themeColor: '#4c1d95',
-	viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
+	width: 'device-width',
+	initialScale: 1,
+	maximumScale: 1,
 };
 
 export default function RootLayout({
 	children,
-}: Readonly<{
+}: {
 	children: React.ReactNode;
-}>) {
+}) {
 	return (
 		<html lang="en">
-			<head />
-			<body className={`${robotoCondensed.variable} antialiased`}>
-				{children}
-				<script
-					dangerouslySetInnerHTML={{
-						__html: `
-							if ('serviceWorker' in navigator) {
-								window.addEventListener('load', function() {
-									navigator.serviceWorker.register('/sw.js');
-								});
-							}
-						`,
-					}}
-				/>
-			</body>
+			<body className={robotoCondensed.variable}>{children}</body>
+			<script
+				dangerouslySetInnerHTML={{
+					__html: `
+						if ('serviceWorker' in navigator) {
+							window.addEventListener('load', function() {
+								navigator.serviceWorker.register('/sw.js');
+							});
+						}
+					`,
+				}}
+			/>
 		</html>
 	);
 }
