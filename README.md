@@ -1,20 +1,20 @@
 # Disney Villainous Companion App
 
-Una Progressive Web App (PWA) per assistere i giocatori durante le partite di Disney Villainous.
+A Progressive Web App (PWA) to assist players during Disney Villainous board game sessions.
 
-## Caratteristiche
+## Features
 
-- 🎮 Selezione del numero di giocatori (2-6)
-- 🎯 Selezione del livello di difficoltà
-- 🎭 Assegnazione casuale dei cattivi Disney
-- 🔄 Possibilità di cambiare i cattivi assegnati
-- 🎲 Selezione casuale del primo giocatore
-- 🌍 Supporto multilingua (IT, EN, FR, ES)
-- 📱 Progressive Web App (installabile)
-- 📴 Funzionamento offline
-- 📱 Design responsive
+- 🎮 Player count selection (2-6)
+- 🎯 Difficulty level selection
+- 🎭 Random Disney villain assignment
+- 🔄 Option to change assigned villains
+- 🎲 Random first player selection
+- 🌍 Multilingual support (EN, IT, FR, ES)
+- 📱 Progressive Web App (installable)
+- 📴 Offline functionality
+- 📱 Responsive design
 
-## Tecnologie Utilizzate
+## Technologies Used
 
 - Next.js 15
 - TypeScript
@@ -22,34 +22,40 @@ Una Progressive Web App (PWA) per assistere i giocatori durante le partite di Di
 - Shadcn/ui
 - PWA
 
-## Installazione
+## Installation
 
 ```bash
-# Clona il repository
+# Clone the repository
 git clone https://github.com/J3tr0/villainous-companion.git
 
-# Entra nella directory
+# Navigate to directory
 cd villainous-companion
 
-# Installa le dipendenze
+# Install dependencies
 pnpm install
 
-# Avvia il server di sviluppo
+# Start development server
 pnpm dev
 ```
 
-## Utilizzo
+## Usage
 
-1. Seleziona il numero di giocatori (2-6)
-2. Scegli il livello di difficoltà (Facile, Medio, Difficile)
-3. Clicca su "Inizia Partita"
-4. Se necessario, sostituisci i cattivi assegnati
-5. Clicca su "Start" per determinare il primo giocatore
+1. Select number of players (2-6)
+2. Choose difficulty level (Easy, Medium, Hard)
+3. Click "Start Game"
+4. Replace assigned villains if needed
+5. Click "Start" to determine first player
 
-## Contribuire
+## Contributing
 
-Le pull request sono benvenute. Per modifiche importanti, apri prima una issue per discutere cosa vorresti cambiare.
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-## Licenza
+## Disclaimer
+
+This application is a fan-made project and is not affiliated, associated, authorized, endorsed by, or in any way officially connected with Disney, Ravensburger, or any of their subsidiaries or affiliates.
+
+All product names, logos, and brands are property of their respective owners. All company, product and service names used in this application are for identification purposes only.
+
+## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
