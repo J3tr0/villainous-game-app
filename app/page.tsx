@@ -39,7 +39,7 @@ export default function Home() {
 			<div className="flex flex-col items-center gap-12 mt-8 animate-fadeIn">
 				<div className="relative group">
 					<Image
-						src="/logo-disney-villainous.png"
+						src="/logo-disney-villainous-dark.png"
 						alt="Logo Disney Villainous"
 						width={250}
 						height={125}
