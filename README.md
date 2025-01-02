@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Disney Villainous Companion App
 
-## Getting Started
+Una Progressive Web App (PWA) per assistere i giocatori durante le partite di Disney Villainous.
 
-First, run the development server:
+## Caratteristiche
+
+- 🎮 Selezione del numero di giocatori (2-6)
+- 🎯 Selezione del livello di difficoltà
+- 🎭 Assegnazione casuale dei cattivi Disney
+- 🔄 Possibilità di cambiare i cattivi assegnati
+- 🎲 Selezione casuale del primo giocatore
+- 🌍 Supporto multilingua (IT, EN, FR, ES)
+- 📱 Progressive Web App (installabile)
+- 📴 Funzionamento offline
+- 📱 Design responsive
+
+## Tecnologie Utilizzate
+
+- Next.js 15
+- TypeScript
+- Tailwind CSS
+- Shadcn/ui
+- PWA
+
+## Installazione
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+# Clona il repository
+git clone https://github.com/J3tr0/villainous-companion.git
+
+# Entra nella directory
+cd villainous-companion
+
+# Installa le dipendenze
+pnpm install
+
+# Avvia il server di sviluppo
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Utilizzo
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Seleziona il numero di giocatori (2-6)
+2. Scegli il livello di difficoltà (Facile, Medio, Difficile)
+3. Clicca su "Inizia Partita"
+4. Se necessario, sostituisci i cattivi assegnati
+5. Clicca su "Start" per determinare il primo giocatore
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Contribuire
 
-## Learn More
+Le pull request sono benvenute. Per modifiche importanti, apri prima una issue per discutere cosa vorresti cambiare.
 
-To learn more about Next.js, take a look at the following resources:
+## Licenza
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[MIT](https://choosealicense.com/licenses/mit/)
