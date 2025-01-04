@@ -1,3 +1,4 @@
+import { PWAInstallPrompt } from '@/components/PWAInstallPrompt';
 import { Metadata, Viewport } from 'next';
 import { Roboto_Condensed } from 'next/font/google';
 import './globals.css';
@@ -29,6 +30,7 @@ export default function RootLayout({
 		<html lang="en">
 			<body className={robotoCondensed.variable}>
 				<div className="relative min-h-screen overflow-hidden">{children}</div>
+				<PWAInstallPrompt />
 			</body>
 			<script
 				dangerouslySetInnerHTML={{
