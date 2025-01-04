@@ -2,9 +2,17 @@
 
 import { useTranslations } from '@/hooks/useTranslations';
 import type { GameSettings } from '@/lib/types';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+
+// Importazione dinamica del ClearCacheButton
+const ClearCacheButton = dynamic(
+	() =>
+		import('@/components/ClearCacheButton').then((mod) => mod.ClearCacheButton),
+	{ ssr: false } // Disabilita il server-side rendering
+);
 
 // Stili base dei pulsanti estratti per riutilizzo e consistenza
 const buttonBaseClass = `
@@ -179,6 +187,10 @@ export default function Home() {
 						</button>
 					</div>
 				</div>
+			</div>
+
+			<div className="fixed bottom-4 left-4">
+				<ClearCacheButton />
 			</div>
 		</div>
 	);
