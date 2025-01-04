@@ -1,4 +1,4 @@
-import { PWAInstallPrompt } from '@/components/PWAInstallPrompt';
+import { ServiceWorkerRegistration } from '@/components/ServiceWorkerRegistration';
 import { Metadata, Viewport } from 'next';
 import { Roboto_Condensed } from 'next/font/google';
 import './globals.css';
@@ -12,6 +12,12 @@ export const metadata: Metadata = {
 	title: 'Disney Villainous Companion',
 	description: 'Companion app for Disney Villainous board game',
 	manifest: '/manifest.json',
+	icons: {
+		apple: [
+			{ url: '/icon-192x192.png', sizes: '192x192', type: 'image/png' },
+			{ url: '/icon-512x512.png', sizes: '512x512', type: 'image/png' },
+		],
+	},
 };
 
 export const viewport: Viewport = {
@@ -27,22 +33,11 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="en">
+		<html lang="it">
 			<body className={robotoCondensed.variable}>
 				<div className="relative min-h-screen overflow-hidden">{children}</div>
-				<PWAInstallPrompt />
+				<ServiceWorkerRegistration />
 			</body>
-			<script
-				dangerouslySetInnerHTML={{
-					__html: `
-						if ('serviceWorker' in navigator) {
-							window.addEventListener('load', function() {
-								navigator.serviceWorker.register('/sw.js');
-							});
-						}
-					`,
-				}}
-			/>
 		</html>
 	);
 }
