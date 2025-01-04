@@ -7,9 +7,25 @@ import Image from 'next/image';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Suspense, useEffect, useState } from 'react';
 
+// Stili base dei pulsanti estratti per riutilizzo e consistenza
+const buttonBaseClass = `
+	flex items-center justify-center 
+	font-bold transition-all duration-300 ease-in-out
+	transform hover:scale-105
+	hover:shadow-lg hover:-translate-y-1
+	active:scale-95
+`;
+
+const actionButtonClass = `
+	${buttonBaseClass}
+	px-8 py-3 rounded-lg
+	text-white
+`;
+
 function SelectVillainsContent() {
 	const router = useRouter();
 	const searchParams = useSearchParams();
+	const [isLoading, setIsLoading] = useState(false);
 	const numberOfPlayers = Number(searchParams.get('players')) || 2;
 	const difficulty =
 		(searchParams.get('difficulty') as GameSettings['difficulty']) || 'all';
@@ -19,6 +35,17 @@ function SelectVillainsContent() {
 	const [startingPlayer, setStartingPlayer] = useState<number | null>(null);
 
 	const t = useTranslations();
+
+	const handleBack = async () => {
+		try {
+			setIsLoading(true);
+			await router.back();
+		} catch (error) {
+			console.error('Navigation error:', error);
+		} finally {
+			setIsLoading(false);
+		}
+	};
 
 	const getNewVillain = (currentVillain: Villain) => {
 		if (!currentVillain) return null;
@@ -120,7 +147,11 @@ function SelectVillainsContent() {
 	}, [difficulty, numberOfPlayers]);
 
 	if (!assignedVillains.length) {
-		return <div>{t.loading}</div>;
+		return (
+			<div className="min-h-screen bg-gradient-to-br from-purple-900 via-indigo-800 to-pink-800 p-5 flex items-center justify-center animate-fadeIn">
+				<div className="animate-spin w-8 h-8 border-3 border-white/20 border-t-white rounded-full" />
+			</div>
+		);
 	}
 
 	return (
@@ -133,24 +164,29 @@ function SelectVillainsContent() {
 				<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
 					{assignedVillains.map((villain, index) => (
 						<div
-							key={`${villain.id}-${index}`}
-							className="flex flex-col">
+							key={`${villain.id}`}
+							className={`
+								flex flex-col transform
+								transition-all duration-300
+								hover:scale-105
+								${villain.id !== assignedVillains[index]?.id ? 'animate-flip' : ''}
+							`}>
 							<div
 								className={`
 									relative aspect-square rounded-xl overflow-hidden
-									transform transition-all duration-500
-									hover:scale-105 shadow-xl
-									${
-										startingPlayer !== null && index === startingPlayer
-											? 'ring-4 ring-yellow-400 ring-offset-4 ring-offset-transparent'
-											: ''
-									}
+										shadow-xl transition-all duration-300
+										${
+											startingPlayer !== null && index === startingPlayer
+												? 'ring-4 ring-yellow-400 ring-offset-4 ring-offset-transparent scale-105'
+												: ''
+										}
 								`}>
 								<Image
 									src={villain.img || '/placeholder-villain.jpg'}
 									alt={villain.name}
 									fill
 									className="object-cover"
+									priority={index < 4}
 								/>
 							</div>
 							<div className="text-center mt-3 space-y-1">
@@ -206,26 +242,26 @@ function SelectVillainsContent() {
 
 				<div className="mt-8 flex justify-center gap-4">
 					<button
-						onClick={() => router.back()}
-						className="bg-white/10 border border-white/20
-								 text-white px-8 py-3 rounded-lg font-bold
-								 hover:scale-105 transition-transform
-								 hover:bg-white/20 shadow-lg">
+						onClick={handleBack}
+						disabled={isLoading}
+						className={`
+							${actionButtonClass}
+							bg-white/10 border border-white/20
+							hover:bg-white/20
+						`}>
 						{t.backToSettings}
 					</button>
 
 					<button
 						onClick={handleStart}
-						disabled={startingPlayer !== null}
+						disabled={startingPlayer !== null || isLoading}
 						className={`
-								px-8 py-3 rounded-lg font-bold
-								transition-all duration-300 shadow-lg
-								${
-									startingPlayer === null
-										? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:scale-105'
-										: 'bg-gray-500/50 text-gray-300 cursor-not-allowed'
-								}
-							`}>
+							${actionButtonClass}
+							bg-gradient-to-r from-purple-600 to-pink-600
+							hover:from-purple-500 hover:to-pink-500
+							disabled:opacity-50 disabled:cursor-not-allowed
+							disabled:hover:scale-100 disabled:hover:translate-y-0
+						`}>
 						{startingPlayer === null ? t.startGame : t.gameStarted}
 					</button>
 				</div>
@@ -236,7 +272,12 @@ function SelectVillainsContent() {
 
 export default function SelectVillains() {
 	return (
-		<Suspense fallback={<div>Loading...</div>}>
+		<Suspense
+			fallback={
+				<div className="min-h-screen bg-gradient-to-br from-purple-900 via-indigo-800 to-pink-800 p-5 flex items-center justify-center">
+					<div className="animate-spin w-8 h-8 border-3 border-white/20 border-t-white rounded-full" />
+				</div>
+			}>
 			<SelectVillainsContent />
 		</Suspense>
 	);

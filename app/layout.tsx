@@ -27,7 +27,9 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en">
-			<body className={robotoCondensed.variable}>{children}</body>
+			<body className={robotoCondensed.variable}>
+				<div className="relative min-h-screen overflow-hidden">{children}</div>
+			</body>
 			<script
 				dangerouslySetInnerHTML={{
 					__html: `
