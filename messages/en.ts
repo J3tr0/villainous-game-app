@@ -14,4 +14,5 @@ export default {
 	noMoreVillains: 'No more villains available',
 	backToSettings: 'Back to Settings',
 	gameStarted: 'Game Started',
+	all: 'All',
 } as const;

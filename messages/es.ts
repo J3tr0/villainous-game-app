@@ -14,4 +14,5 @@ export default {
 	noMoreVillains: 'No hay más villanos disponibles',
 	backToSettings: 'Volver a Ajustes',
 	gameStarted: 'Juego Iniciado',
+	all: 'Todos',
 } as const;

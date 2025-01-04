@@ -14,4 +14,5 @@ export default {
 	noMoreVillains: 'Non ci sono più cattivi disponibili',
 	backToSettings: 'Torna alle Impostazioni',
 	gameStarted: 'Partita Iniziata',
+	all: 'Tutti',
 } as const;

@@ -10,7 +10,7 @@ export default function Home() {
 	const router = useRouter();
 	const [gameSettings, setGameSettings] = useState<GameSettings>({
 		numberOfPlayers: 2,
-		difficulty: 'easy',
+		difficulty: 'all',
 	});
 	const t = useTranslations();
 
@@ -80,14 +80,14 @@ export default function Home() {
 							{t.difficultyLevel}
 						</label>
 						<div className="flex justify-center gap-4 px-8">
-							{['easy', 'medium', 'hard'].map((diff) => (
+							{['all', 'easy', 'medium', 'hard'].map((diff) => (
 								<button
 									key={diff}
 									onClick={() =>
 										handleDifficultyChange(diff as GameSettings['difficulty'])
 									}
 									className={`
-										px-4 py-2 rounded-lg
+										px-4 py-2 rounded-xl
 										flex items-center justify-center 
 										text-base font-bold transition-all duration-300
 										hover:shadow-lg hover:-translate-y-1
