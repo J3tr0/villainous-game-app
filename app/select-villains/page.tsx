@@ -211,7 +211,7 @@ function SelectVillainsContent() {
 											transition-all duration-300
 											${
 												isVillainReplaceable(villain)
-													? 'bg-red-500/20 text-red-200 border border-red-500/30 hover:bg-red-500/30 hover:scale-110'
+													? 'bg-red-500/20 text-red-200 border border-red-500/30 hover:bg-red-500/30 hover:scale-110 hover:shadow-lg hover:shadow-red-500/20'
 													: 'bg-gray-500/20 text-gray-400 border border-gray-500/30 cursor-not-allowed opacity-50'
 											}
 										`}
