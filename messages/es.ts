@@ -15,4 +15,6 @@ export default {
 	backToSettings: 'Volver a Ajustes',
 	gameStarted: 'Juego Iniciado',
 	all: 'Todos',
+	newVersionAvailable: '¡Hay una nueva versión disponible!',
+	updateNow: 'Actualizar ahora',
 } as const;

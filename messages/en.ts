@@ -15,4 +15,6 @@ export default {
 	backToSettings: 'Back to Settings',
 	gameStarted: 'Game Started',
 	all: 'All',
+	newVersionAvailable: 'A new version is available!',
+	updateNow: 'Update now',
 } as const;

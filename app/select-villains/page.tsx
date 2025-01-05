@@ -55,6 +55,12 @@ function SelectVillainsContent() {
 			(v) => !usedVillains.has(v.id) && !currentlyAssignedIds.has(v.id)
 		);
 
+		if (difficulty === 'all') {
+			return availableVillains[
+				Math.floor(Math.random() * availableVillains.length)
+			];
+		}
+
 		let newVillain = null;
 
 		switch (currentVillain.difficulty) {
@@ -101,6 +107,10 @@ function SelectVillainsContent() {
 		const availableVillains = villains.filter(
 			(v) => !usedVillains.has(v.id) && !currentlyAssignedIds.has(v.id)
 		);
+
+		if (difficulty === 'all') {
+			return availableVillains.length > 0;
+		}
 
 		switch (villain.difficulty) {
 			case 'hard':

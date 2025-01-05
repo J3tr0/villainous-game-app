@@ -1,4 +1,5 @@
 import { ServiceWorkerRegistration } from '@/components/ServiceWorkerRegistration';
+import { UpdateNotification } from '@/components/UpdateNotification';
 import { Metadata, Viewport } from 'next';
 import { Roboto_Condensed } from 'next/font/google';
 import './globals.css';
@@ -37,6 +38,7 @@ export default function RootLayout({
 			<body className={robotoCondensed.variable}>
 				<div className="relative min-h-screen overflow-hidden">{children}</div>
 				<ServiceWorkerRegistration />
+				<UpdateNotification />
 			</body>
 		</html>
 	);
