@@ -13,49 +13,49 @@ export function UpdateNotification() {
 
 	useEffect(() => {
 		if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
-			// Registra un listener per gli aggiornamenti
-			const handleUpdate = (registration: ServiceWorkerRegistration) => {
-				if (registration.waiting) {
-					setWaitingWorker(registration.waiting);
-					setShowReload(true);
-				}
-			};
+			// Controlla immediatamente se c'è un service worker in attesa
+			navigator.serviceWorker.getRegistration().then((registration) => {
+				if (registration) {
+					if (registration.waiting) {
+						setWaitingWorker(registration.waiting);
+						setShowReload(true);
+					}
 
-			// Controlla se c'è un nuovo service worker
-			navigator.serviceWorker.ready.then((registration) => {
-				registration.addEventListener('controllerchange', () => {
-					window.location.reload();
-				});
+					// Ascolta i nuovi service worker
+					registration.addEventListener('updatefound', () => {
+						const newWorker = registration.installing;
+						if (newWorker) {
+							newWorker.addEventListener('statechange', () => {
+								if (
+									newWorker.state === 'installed' &&
+									navigator.serviceWorker.controller
+								) {
+									setWaitingWorker(newWorker);
+									setShowReload(true);
+								}
+							});
+						}
+					});
+				}
 			});
 
-			// Controlla periodicamente gli aggiornamenti
+			// Controlla gli aggiornamenti ogni minuto
 			const interval = setInterval(() => {
 				navigator.serviceWorker.getRegistration().then((registration) => {
 					if (registration) {
 						registration.update();
 					}
 				});
-			}, 1000 * 60 * 60); // Controlla ogni ora
-
-			navigator.serviceWorker.getRegistration().then((registration) => {
-				if (registration) {
-					registration.addEventListener('updatefound', () =>
-						handleUpdate(registration)
-					);
-					// Controlla anche lo stato corrente
-					if (registration.waiting) {
-						handleUpdate(registration);
-					}
-				}
-			});
+			}, 60000); // 1 minuto
 
 			return () => clearInterval(interval);
 		}
 	}, []);
 
 	const reloadPage = () => {
-		waitingWorker?.postMessage({ type: 'SKIP_WAITING' });
-		setShowReload(false);
+		if (waitingWorker) {
+			waitingWorker.postMessage({ type: 'SKIP_WAITING' });
+		}
 		window.location.reload();
 	};
 

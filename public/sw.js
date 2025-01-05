@@ -1,4 +1,4 @@
-const CACHE_NAME = 'villainous-v2.1';
+const CACHE_NAME = 'villainous-v2.2';
 
 self.addEventListener('install', (event) => {
 	event.waitUntil(
@@ -38,7 +38,7 @@ self.addEventListener('fetch', (event) => {
 
 // Invia un messaggio a tutti i client quando c'è un nuovo service worker
 self.addEventListener('message', (event) => {
-	if (event.data === 'skipWaiting') {
+	if (event.data && event.data.type === 'SKIP_WAITING') {
 		self.skipWaiting();
 	}
 });
