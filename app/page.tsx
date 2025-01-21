@@ -114,7 +114,7 @@ export default function Home() {
 							{t.difficultyLevel}
 						</label>
 						<div className="flex flex-col items-center gap-4">
-							<div className="flex justify-center gap-4">
+							<div className="grid grid-cols-2 md:flex justify-center gap-4">
 								{['green', 'yellow', 'orange', 'red'].map((diff) => (
 									<button
 										key={diff}
@@ -123,6 +123,7 @@ export default function Home() {
 										}
 										className={`
 											${difficultyButtonClass}
+											w-full md:w-auto
 											${
 												gameSettings.difficulty === diff
 													? 'bg-gradient-to-br from-purple-500 to-pink-500 text-white scale-105 shadow-lg'
@@ -137,7 +138,7 @@ export default function Home() {
 								onClick={() => handleDifficultyChange('all')}
 								className={`
 									${difficultyButtonClass}
-									px-8
+									w-full md:w-auto
 									${
 										gameSettings.difficulty === 'all'
 											? 'bg-gradient-to-br from-purple-500 to-pink-500 text-white scale-105 shadow-lg'
