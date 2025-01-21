@@ -17,4 +17,8 @@ export default {
 	all: 'All',
 	newVersionAvailable: 'A new version is available!',
 	updateNow: 'Update now',
+	green: 'Green',
+	yellow: 'Yellow',
+	orange: 'Orange',
+	red: 'Red',
 } as const;

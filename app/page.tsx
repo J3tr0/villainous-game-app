@@ -39,7 +39,7 @@ export default function Home() {
 	const router = useRouter();
 	const [isLoading, setIsLoading] = useState(false);
 	const [gameSettings, setGameSettings] = useState<GameSettings>({
-		numberOfPlayers: 2,
+		players: 2,
 		difficulty: 'all',
 	});
 	const t = useTranslations();
@@ -47,7 +47,7 @@ export default function Home() {
 	const handlePlayerCountChange = (value: number) => {
 		setGameSettings((prev) => ({
 			...prev,
-			numberOfPlayers: value,
+			players: value,
 		}));
 	};
 
@@ -62,7 +62,7 @@ export default function Home() {
 		try {
 			setIsLoading(true);
 			await router.push(
-				`/select-villains?players=${gameSettings.numberOfPlayers}&difficulty=${gameSettings.difficulty}`
+				`/select-villains?players=${gameSettings.players}&difficulty=${gameSettings.difficulty}`
 			);
 		} catch (error) {
 			console.error('Navigation error:', error);
@@ -98,7 +98,7 @@ export default function Home() {
 									className={`
 										${playerCountButtonClass}
 										${
-											gameSettings.numberOfPlayers === num
+											gameSettings.players === num
 												? 'bg-gradient-to-br from-purple-500 to-pink-500 text-white scale-110 shadow-lg'
 												: 'bg-white/10 text-white hover:bg-white/20 border border-white/20'
 										}
@@ -115,7 +115,7 @@ export default function Home() {
 						</label>
 						<div className="flex flex-col items-center gap-4">
 							<div className="flex justify-center gap-4">
-								{['easy', 'medium', 'hard'].map((diff) => (
+								{['green', 'yellow', 'orange', 'red'].map((diff) => (
 									<button
 										key={diff}
 										onClick={() =>

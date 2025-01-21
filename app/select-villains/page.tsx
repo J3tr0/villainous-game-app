@@ -2,7 +2,7 @@
 
 import { villains } from '@/data/villains';
 import { useTranslations } from '@/hooks/useTranslations';
-import type { GameSettings, Villain } from '@/lib/types';
+import type { Difficulty, GameSettings, Villain } from '@/lib/types';
 import Image from 'next/image';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Suspense, useEffect, useState } from 'react';
@@ -61,32 +61,20 @@ function SelectVillainsContent() {
 			];
 		}
 
-		let newVillain = null;
+		const difficultyLevels: Difficulty[] = ['green', 'yellow', 'orange', 'red'];
+		const currentDifficultyIndex = difficultyLevels.indexOf(
+			currentVillain.difficulty
+		);
 
-		switch (currentVillain.difficulty) {
-			case 'hard':
-				newVillain = availableVillains.find((v) => v.difficulty === 'hard');
-				if (!newVillain) {
-					newVillain = availableVillains.find((v) => v.difficulty === 'medium');
-				}
-				if (!newVillain) {
-					newVillain = availableVillains.find((v) => v.difficulty === 'easy');
-				}
-				break;
-
-			case 'medium':
-				newVillain = availableVillains.find((v) => v.difficulty === 'medium');
-				if (!newVillain) {
-					newVillain = availableVillains.find((v) => v.difficulty === 'easy');
-				}
-				break;
-
-			case 'easy':
-				newVillain = availableVillains.find((v) => v.difficulty === 'easy');
-				break;
+		// Cerca villain disponibili con difficoltà uguale o inferiore
+		for (let i = currentDifficultyIndex; i >= 0; i--) {
+			const newVillain = availableVillains.find(
+				(v) => v.difficulty === difficultyLevels[i]
+			);
+			if (newVillain) return newVillain;
 		}
 
-		return newVillain;
+		return null;
 	};
 
 	const handleReplaceVillain = (villainToReplace: Villain) => {
@@ -112,23 +100,13 @@ function SelectVillainsContent() {
 			return availableVillains.length > 0;
 		}
 
-		switch (villain.difficulty) {
-			case 'hard':
-				return availableVillains.some(
-					(v) =>
-						v.difficulty === 'hard' ||
-						v.difficulty === 'medium' ||
-						v.difficulty === 'easy'
-				);
-			case 'medium':
-				return availableVillains.some(
-					(v) => v.difficulty === 'medium' || v.difficulty === 'easy'
-				);
-			case 'easy':
-				return availableVillains.some((v) => v.difficulty === 'easy');
-			default:
-				return false;
-		}
+		const difficultyLevels: Difficulty[] = ['green', 'yellow', 'orange', 'red'];
+		const currentDifficultyIndex = difficultyLevels.indexOf(villain.difficulty);
+
+		// Controlla se ci sono villain disponibili con difficoltà uguale o inferiore
+		return availableVillains.some(
+			(v) => difficultyLevels.indexOf(v.difficulty) <= currentDifficultyIndex
+		);
 	};
 
 	const handleStart = () => {
